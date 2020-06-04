@@ -71,7 +71,7 @@ public class search {
         bt.root.right.right = new Node(6);  
   
         //Search for node 5 in the binary tree  
-        bt.searchNode(bt.root, 5);  
+        bt.searchNode(bt.root, 10);  
   
         if(flag)  
           System.out.println("Element is present in the binary tree");  
