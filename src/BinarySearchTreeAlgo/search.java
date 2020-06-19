@@ -12,10 +12,8 @@ package BinarySearchTreeAlgo;
 public class search {  
         //Represent the root of binary tree  
       public Node root;  
-  
-      public static boolean flag = false;  
-      
-      
+      public boolean flag = false; 
+       
       //Represent a node of binary tree  
       public static class Node{  
         int data;  
@@ -30,14 +28,13 @@ public class search {
         }  
       }  
   
-
-  
       public search(){  
         root = null;  
       }  
   
       //searchNode() will search for the particular node in the binary tree  
-      public void searchNode(Node temp, int value){  
+      public boolean searchNode(Node temp, int value){
+        
         //Check whether tree is empty  
         if(root == null){  
           System.out.println("Tree is empty");  
@@ -46,7 +43,7 @@ public class search {
           //If value is found in the given binary tree then, set the flag to true  
           if(temp.data == value){  
             flag = true;  
-               return;  
+            return flag;  
           }  
           //Search in left subtree  
           if(flag == false && temp.left != null){  
@@ -56,7 +53,8 @@ public class search {
           if(flag == false && temp.right != null){  
              searchNode(temp.right, value);  
           }  
-        }  
+        } 
+        return flag;
       }  
   
       public static void main(String[] args) {  
@@ -71,11 +69,8 @@ public class search {
         bt.root.right.right = new Node(6);  
   
         //Search for node 5 in the binary tree  
-        bt.searchNode(bt.root, 10);  
-  
-        if(flag)  
-          System.out.println("Element is present in the binary tree");  
-        else  
-          System.out.println("Element is not present in the binary tree");  
+
+          System.out.println(bt.searchNode(bt.root, 7));  
+
       }  
     }  
