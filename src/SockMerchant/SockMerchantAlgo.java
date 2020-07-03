@@ -5,7 +5,9 @@
  */
 package SockMerchant;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -14,6 +16,11 @@ import java.util.HashSet;
 public class SockMerchantAlgo {
     
     public static void main(String[] args){
+        ArrayList<String> list = new ArrayList<String>();
+list.ensureCapacity(10);    // This will work
+
+
+List<String> list2 = new ArrayList<String>();
         int[] ar=new int[]{2,3,4,5,2,3,4,6};
         System.out.println(sockMerchant(ar));
     }
