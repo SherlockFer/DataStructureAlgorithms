@@ -27,32 +27,30 @@ public class SPAAlgorithm {
             //add back edge for undirected graph
             matrix[destination][source] = weight;
         }
-
-        //get the vertex with minimum distance which is not included in SPT
-        int getMinimumVertex(boolean [] mst, int [] key){
-            int minKey = Integer.MAX_VALUE;
-            int vertex = -1;
-            for (int i = 0; i <vertices ; i++) {
-                if(mst[i]==false && minKey>key[i]){
-                    minKey = key[i];
-                    vertex = i;
+        //getMinimumVertex
+        int getMinimumVertex(boolean[] sptset,int[] distance){
+            int min=Integer.MAX_VALUE;
+            int min_vert=-1;
+            for(int vert=0;vert<vertices;vert++){
+                if(sptset[vert]==false && distance[vert]<=min){
+                    min=distance[vert];
+                    min_vert=vert;
                 }
             }
-            return vertex;
+            return min_vert;
         }
 
         public void dijkstra_GetMinDistances(int sourceVertex){
-            boolean[] spt = new boolean[vertices];
-            int [] distance = new int[vertices];
-            int INFINITY = Integer.MAX_VALUE;
-
-            //Initialize all the distance to infinity
-            for (int i = 0; i <vertices ; i++) {
-                distance[i] = INFINITY;
+            boolean[]  spt=new boolean[vertices];
+            int[] distance=new int[vertices];
+            int INFINITY=Integer.MAX_VALUE;
+            
+            for (int i = 0; i < vertices; i++) {
+                spt[i]=false;
+                distance[i]=INFINITY;
             }
-
-            //start from the vertex 0
-            distance[sourceVertex] = 0;
+            
+            distance[sourceVertex]=0;
 
             //create SPT
             for (int i = 0; i <vertices ; i++) {
@@ -98,7 +96,7 @@ public class SPAAlgorithm {
     public static void main(String[] args) {
         int vertices = 6;
         Graph graph = new Graph(vertices);
-        int sourceVertex = 0;
+        int sourceVertex = 2;
         graph.addEdge(0, 1, 4);
         graph.addEdge(0, 2, 3);
         graph.addEdge(1, 2, 1);
